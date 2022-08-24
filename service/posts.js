@@ -25,6 +25,9 @@ class PostService {
 
   async getById(id) {
     return Posts.findAll({
+      attributes: {
+        exclude: ['post_id', 'post_isdeleted']
+      },
       where: {
         post_id: id,
       },
@@ -32,7 +35,11 @@ class PostService {
   }
 
   async insert(post) {
-    return Posts.create(post);
+    return Posts.create({
+      post_title: post.postTitle,
+      post_author: post.postAuthor,
+      post_content: post.postContent
+    });
   }
 
   async list() {
@@ -41,8 +48,12 @@ class PostService {
     })
   }
 
-  async update(id) {
-    Posts.update(post, {
+  async update(post,id) {
+    return Posts.update({
+      post_title: post.postTitle,
+      post_author: post.postAuthor,
+      post_content: post.postContent
+    }, {
       where: {
         post_id: id,
       },
