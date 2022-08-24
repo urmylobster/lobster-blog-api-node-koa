@@ -10,6 +10,8 @@
 - koa-logger
 - koa-bodyparser
 - sequelize
+- nodemon
+- moment
 - dotenv
 
 ## 使用步骤
