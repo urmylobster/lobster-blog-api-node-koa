@@ -3,6 +3,9 @@ const moment = require('moment');
 const Logger = require("koa-logger"); // 日志中间件
 const bodyParser = require("koa-bodyparser"); // post请求中间件
 const router = require('./router')
+const catchError = require('./middleware/exception')
+const errors = require('./utils/http-exception')
+global.errs = errors
 
 
 // 日志中间件
@@ -21,6 +24,8 @@ const Port = process.env.PORT || 3000
 const app = new Koa()
 
 // 中间件挂载
+// 全局异常中间件监听、处理，放在所有中间件的最前面
+app.use(catchError)
 app.use(bodyParser());
 app.use(logger)
 

@@ -24,7 +24,7 @@ const Posts = sequelize.define(
     post_isdeleted: {
       type: Sequelize.INTEGER, // 字段类型
       allowNull: true, // 是否允许为空
-      default: 0
+      defaultValue: 0 // 字面默认值, JavaScript函数, 或一个 SQL 函数
     },
   },
   {
