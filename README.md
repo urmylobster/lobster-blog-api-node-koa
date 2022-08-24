@@ -10,6 +10,7 @@
 - koa-logger
 - koa-bodyparser
 - sequelize
+- mysql
 - nodemon
 - moment
 - dotenv
